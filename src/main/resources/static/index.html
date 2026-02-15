@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="layout">
+    <aside class="panel library">
+        <h2>Saved Resumes</h2>
+        <p class="muted">Create, edit, and export polished profiles.</p>
+        <div id="resume-list" class="resume-list"></div>
+    </aside>
+
+    <main class="panel editor">
+        <h1>Resume Builder</h1>
+        <p class="muted">Build a one-page resume and preview it live.</p>
+
+        <form id="resume-form">
+            <div class="grid two">
+                <label>
+                    Full Name
+                    <input name="fullName" id="fullName" type="text" required>
+                </label>
+                <label>
+                    Headline
+                    <input name="headline" id="headline" type="text" required>
+                </label>
+            </div>
+
+            <div class="grid two">
+                <label>
+                    Email
+                    <input name="email" id="email" type="email" required>
+                </label>
+                <label>
+                    Phone
+                    <input name="phone" id="phone" type="text">
+                </label>
+            </div>
+
+            <label>
+                Professional Summary
+                <textarea name="summary" id="summary" rows="4" maxlength="1000"></textarea>
+            </label>
+
+            <label>
+                Skills (comma-separated)
+                <input name="skills" id="skills" type="text" placeholder="Java, Spring Boot, MongoDB">
+            </label>
+
+            <section class="section-block">
+                <div class="section-header">
+                    <h3>Education</h3>
+                    <button type="button" class="ghost" id="add-education">Add</button>
+                </div>
+                <div id="educations"></div>
+            </section>
+
+            <section class="section-block">
+                <div class="section-header">
+                    <h3>Experience</h3>
+                    <button type="button" class="ghost" id="add-experience">Add</button>
+                </div>
+                <div id="experiences"></div>
+            </section>
+
+            <div class="actions">
+                <button type="submit" class="primary" id="save-btn">Save Resume</button>
+                <button type="button" id="reset-btn">New Resume</button>
+            </div>
+            <p id="form-status" class="status"></p>
+        </form>
+    </main>
+
+    <aside class="panel preview">
+        <h2>Live Preview</h2>
+        <article id="preview-card" class="preview-card">
+            <h1 id="p-name">Your Name</h1>
+            <p id="p-headline">Your headline</p>
+            <p id="p-contact">you@example.com | +1 000 000 0000</p>
+            <section>
+                <h4>Summary</h4>
+                <p id="p-summary">Your summary will appear here.</p>
+            </section>
+            <section>
+                <h4>Skills</h4>
+                <p id="p-skills">No skills added yet.</p>
+            </section>
+            <section>
+                <h4>Education</h4>
+                <div id="p-education" class="list-block">No education added yet.</div>
+            </section>
+            <section>
+                <h4>Experience</h4>
+                <div id="p-experience" class="list-block">No experience added yet.</div>
+            </section>
+        </article>
+    </aside>
+</div>
+
+<template id="education-template">
+    <div class="item-card education-item">
+        <div class="grid two">
+            <label>School<input type="text" data-field="school" required></label>
+            <label>Degree<input type="text" data-field="degree" required></label>
+        </div>
+        <div class="grid two">
+            <label>Start<input type="text" data-field="startDate" placeholder="Jan 2022"></label>
+            <label>End<input type="text" data-field="endDate" placeholder="Present"></label>
+        </div>
+        <label>Description<textarea data-field="description" rows="2"></textarea></label>
+        <button type="button" class="danger remove-item">Remove</button>
+    </div>
+</template>
+
+<template id="experience-template">
+    <div class="item-card experience-item">
+        <div class="grid two">
+            <label>Company<input type="text" data-field="company" required></label>
+            <label>Role<input type="text" data-field="role" required></label>
+        </div>
+        <div class="grid two">
+            <label>Start<input type="text" data-field="startDate" placeholder="Jan 2023"></label>
+            <label>End<input type="text" data-field="endDate" placeholder="Present"></label>
+        </div>
+        <label>Description<textarea data-field="description" rows="2"></textarea></label>
+        <button type="button" class="danger remove-item">Remove</button>
+    </div>
+</template>
+
+<script src="app.js"></script>
+</body>
+</html>
