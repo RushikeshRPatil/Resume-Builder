@@ -1,6 +1,5 @@
 package com.resume.builder.resume_builder.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.resume.builder.resume_builder.dto.ResumeRequest;
 import com.resume.builder.resume_builder.exception.ApiExceptionHandler;
 import com.resume.builder.resume_builder.exception.NotFoundException;
@@ -9,11 +8,12 @@ import com.resume.builder.resume_builder.service.ResumeService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
+import tools.jackson.databind.ObjectMapper;
 
 import java.time.Instant;
 import java.util.List;
@@ -36,7 +36,7 @@ class ResumeControllerTests {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @MockBean
+    @MockitoBean
     private ResumeService resumeService;
 
     @Test
